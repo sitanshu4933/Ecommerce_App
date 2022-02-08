@@ -9,6 +9,7 @@ import { isUserLoggedIn } from "./actions";
 import { useDispatch, useSelector } from "react-redux";
 import Orders from "./containers/Orders";
 import Products from "./containers/Products";
+import Categories from "./containers/Categories";
 
 function App() {
   const auth = useSelector((state) => state.auth);
@@ -25,6 +26,7 @@ function App() {
         <PrivateRoute path="/" exact component={Home} />
         <PrivateRoute path="/orders" component={Orders} />
         <PrivateRoute path="/products" component={Products} />
+        <PrivateRoute path="/categories" component={Categories} />
         <Route path="/signup" component={Signup} />
         <Route path="/signin" component={Signin} />
       </Switch>
