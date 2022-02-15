@@ -16,6 +16,5 @@ export const getAllCategories = () => {
         payload:{error:res.data.error}
       })
     }
-    console.log(res);
   };
 };
