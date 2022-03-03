@@ -8,10 +8,18 @@ module.exports.addItemtoCart = (req, res) => {
                 const product = req.body.cartItems.product
                 const item = cart.cartItems.find(c => c.product.toString() === product.toString()
                 )
+                let condition,update
                 if (item) {
+                    condition={"user": req.user._id, "cartItems.product": product }
+                    update={"$set": {
+                        "cartItems.$": {
+                            ...req.body.cartItems,
+                            quantity: Number(item.quantity) + Number(req.body.cartItems.quantity)
+                        }
+                    }}
                     Cart.findOneAndUpdate({ "user": req.user._id, "cartItems.product": product }, {
                         "$set": {
-                            "cartItems": {
+                            "cartItems.$": {
                                 ...req.body.cartItems,
                                 quantity: Number(item.quantity) + Number(req.body.cartItems.quantity)
                             }

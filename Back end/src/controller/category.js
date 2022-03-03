@@ -25,6 +25,9 @@ module.exports.addCategory = (req, res) => {
         slug: slugify(req.body.name),
         parentId: req.body.parentId ? req.body.parentId : undefined
     }
+    if(req.file){
+        categoryObj.categoryImage=process.env.API+'/public/'+req.file.filename
+    }
     const cat = new Category(categoryObj)
     cat.save((error, category) => {
         if (error) return res.status(400).json({ error })
