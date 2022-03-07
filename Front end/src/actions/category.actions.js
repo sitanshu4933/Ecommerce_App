@@ -26,10 +26,10 @@ export const addCategory = (form) => {
     if (res.status === 200) {
       dispatch({
         type: categoryConstant.CREATE_NEW_CATEGORY_SUCCESS,
-        payload: res.data.category,
+        payload: { category: res.data.category },
       });
-    }else{
-      dispatch({type:categoryConstant.CREATE_NEW_CATEGORY_FAILURE})
+    } else {
+      dispatch({ type: categoryConstant.CREATE_NEW_CATEGORY_FAILURE });
     }
   };
 };
