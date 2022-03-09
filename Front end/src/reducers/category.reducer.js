@@ -8,6 +8,17 @@ const initstate = {
 
 const buildNewCategory = (parentId, categories, category) => {
   let myCategories = [];
+  if(parentId==undefined){
+    return [
+      ...categories,
+      {
+        _id:category._id,
+        name:category.name,
+        slug:category.slug,
+        children:[]
+      }
+    ]
+  }
   for (let cat of categories) {
     console.log(cat._id);
     if (cat._id == parentId) {
