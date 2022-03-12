@@ -7,10 +7,10 @@ import { addProduct } from "../../actions";
 import Modal from "../../components/UI/Modal";
 import "./style.css";
 
-
 const Products = () => {
   const dispatch = useDispatch();
   const category = useSelector((state) => state.category);
+  const product = useSelector((state) => state.product);
   const [show, setShow] = useState(false);
   const [ProductName, setProductName] = useState("");
   const [ProductPrice, setProductPrice] = useState("");
@@ -124,13 +124,27 @@ const Products = () => {
             </tr>
           </thead>
           <tbody>
-            <tr>
+            {/* <tr>
               <td>1</td>
               <td>Table cell</td>
               <td>Table cell</td>
               <td>Table cell</td>
               <td>Table cell</td>
-            </tr>
+            </tr> */}
+
+            {product.products.length
+              ? product.products.map((prod) => {
+                  return (
+                    <tr>
+                      <td>2</td>
+                      <td>{prod.name}vbn</td>
+                      <td>{prod.price}cvbn</td>
+                      <td>{prod.quantity}cvb</td>
+                      <td>{prod.description}cvh</td>
+                    </tr>
+                  );
+                })
+              : null}
           </tbody>
         </Table>
       </div>

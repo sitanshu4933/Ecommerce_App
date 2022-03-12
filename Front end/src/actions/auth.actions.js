@@ -1,6 +1,5 @@
 import { authConstant } from "./constants";
 import axios from "../helpers/axios";
-import { bindActionCreators } from "redux";
 
 export const login = (user) => {
   return async (dispatch) => {
